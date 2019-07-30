@@ -1,5 +1,6 @@
 import tensorflow as tf
 import keras
+from tensorflow.contrib.keras.preprocessing.text import Tokenizer
 from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Dense
@@ -8,6 +9,9 @@ from keras.layers import MaxPooling2D
 from keras.layers import Flatten
 from keras.layers.normalization import BatchNormalization
 from keras.layers.advanced_activations import LeakyReLU
+#from tensorflow.python.framework import ops
+
+
 
 model = tf.keras.models.Sequential([
     # Note the input shape is the desired size of the image 150x150 with 3 bytes color
