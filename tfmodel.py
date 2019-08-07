@@ -1,6 +1,11 @@
+import os
+
 import tensorflow as tf
-import keras
-from tensorflow.contrib.keras.preprocessing.text import Tokenizer
+from tensorflow.python import keras
+#import keras
+from tensorflow.python.keras.layers import Input, Dense
+from tensorflow.python.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.python.keras.preprocessing.text import Tokenizer
 from keras.utils import to_categorical
 from keras.models import Sequential
 from keras.layers import Dense
@@ -11,6 +16,17 @@ from keras.layers.normalization import BatchNormalization
 from keras.layers.advanced_activations import LeakyReLU
 #from tensorflow.python.framework import ops
 
+base_dir = '/home/anoop/Downloads/dogs-vs-cats'
+
+train_dir = os.path.join(base_dir, 'train')
+
+train_datagen = ImageDataGenerator(rescale=1./255)
+train_generator = train_datagen.flow_from_directory(
+	train_dir,
+	target_size = (150,150),
+	batch_size = 20,
+	class_mode = 'binary'
+	)
 
 
 model = tf.keras.models.Sequential([
